@@ -1,22 +1,78 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <link rel="stylesheet" href="#">
-    <title>Mesto</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
 </head>
 <body>
 <div class="root">
-    <header class="header">
-
-    </header>
-    <main class="content">
-
-    </main>
-    <footer class="footer">
-
-    </footer>
+  <header class="header">
+    <div class="header__logo"></div>
+  </header>
+  <main class="content">
+    <section class="profile">
+      <img class="profile__avatar" src="./images/profile__avatar.png" alt="Аватар">
+      <div class="profile__info">
+        <div class="profile__text">
+          <p class="profile__name">Жак-Ив Кусто</p>
+          <button class="profile__edit-button"></button>
+        </div>
+        <p class="profile__description">Исследователь океана</p>
+      </div>
+      <button class="profile__add-button"></button>
+    </section>
+    <section class="elements">
+      <ul class="cards">
+        <li class="card">
+          <img class="card__photo" src="./images/India.jpg" alt="Индия">
+          <div class="card__info">
+            <p class="card__title">Индия</p>
+            <img class="card__like" src="./images/like-button.svg" alt="кнопка лайк">
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__photo" src="./images/Italy.jpg" alt="Италия">
+          <div class="card__info">
+            <p class="card__title">Италия</p>
+            <img class="card__like" src="./images/like-button.svg" alt="кнопка лайк">
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__photo" src="./images/Denmark.jpg" alt="Дания">
+          <div class="card__info">
+            <p class="card__title">Дания</p>
+            <img class="card__like" src="./images/like-button.svg" alt="кнопка лайк">
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__photo" src="./images/Vien.jpg" alt="Вена">
+          <div class="card__info">
+            <p class="card__title">Вена</p>
+            <img class="card__like" src="./images/like-button.svg" alt="кнопка лайк">
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__photo" src="./images/China.jpg" alt="Китай">
+          <div class="card__info">
+            <p class="card__title">Китай</p>
+            <img class="card__like" src="./images/like-button.svg" alt="кнопка лайк">
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__photo" src="./images/Germany.jpg" alt="Германия">
+          <div class="card__info">
+            <p class="card__title">Германия</p>
+            <img class="card__like" src="./images/like-button.svg" alt="кнопка лайк">
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+  </footer>
 </div>
 </body>
 </html>
