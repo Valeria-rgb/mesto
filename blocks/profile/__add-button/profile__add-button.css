@@ -4,10 +4,16 @@
   background-image: url("../../../images/add-button.svg");
   background-repeat: no-repeat;
   background-position: center;
+  outline-width: 0;
+}
+
+.popup__add-button:focus{
+  outline: none;
 }
 
 .profile__add-button:hover {
   opacity: 60%;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 300px) {

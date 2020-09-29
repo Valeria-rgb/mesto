@@ -21,6 +21,7 @@
     margin: 0 auto 66px;
   }
 }
+
 @media screen and (min-width: 920px) {
   .cards {
     grid-template-columns: repeat(3, 282px);

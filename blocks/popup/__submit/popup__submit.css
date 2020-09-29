@@ -1,0 +1,36 @@
+.popup__submit {
+  border: none;
+  background-color: black;
+  color: white;
+  font-style: normal;
+  font-weight: normal;
+  border-radius: 2px;
+  outline-width: 0;
+}
+
+.profile__submit:focus {
+  outline: none;
+}
+
+.popup__submit:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 300px) {
+  .popup__submit {
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .popup__submit {
+    width: 358px;
+    height: 50.15px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

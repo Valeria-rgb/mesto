@@ -16,7 +16,7 @@
       <img class="profile__avatar" src="./images/profile__avatar.png" alt="Аватар">
       <div class="profile__info">
         <div class="profile__text">
-          <p class="profile__name">Жак-Ив Кусто</p>
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button"></button>
         </div>
         <p class="profile__description">Исследователь океана</p>
@@ -73,6 +73,18 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
+  <section class="popup">
+    <div class="popup__container">
+    <button class="popup__close-button"></button>
+    <form class="popup__form">
+      <p class="popup__title">Редактировать профиль</p>
+      <input class="popup__name-field" type="text" value="Жак-Ив Кусто">
+      <input class="popup__description-field" type="text" value="Исследователь океана">
+      <input class="popup__submit" type="submit" value="Сохранить">
+    </form>
+    </div>
+  </section>
 </div>
+<script src="./scripts/index.js"></script>
 </body>
 </html>
