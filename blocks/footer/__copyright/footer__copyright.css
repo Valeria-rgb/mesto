@@ -2,8 +2,22 @@
   color: #545454;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+@media screen and (min-width: 300px) {
+  .footer__copyright {
+    padding-bottom: 36px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .footer__copyright {
+    padding-bottom: 60px;
+    font-size: 18px;
+    line-height: 22px;
+  }
 }

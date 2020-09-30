@@ -1,6 +1,6 @@
-.popup__description-field {
+.popup__input {
   border: none;
-  border-bottom: 2px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -8,15 +8,13 @@
 }
 
 @media screen and (min-width: 300px) {
-  .popup__description-field {
+  .popup__input {
     width: 238px;
-    margin-bottom: 45px;
   }
 }
 
 @media screen and (min-width: 960px) {
-  .popup__description-field {
+  .popup__input {
     width: 358px;
-    margin-bottom: 48px;
   }
 }

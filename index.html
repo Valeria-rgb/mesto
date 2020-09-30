@@ -17,54 +17,54 @@
       <div class="profile__info">
         <div class="profile__text">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button"></button>
+          <button class="profile__edit-button" type="button" aria-label="Edit"></button>
         </div>
         <p class="profile__description">Исследователь океана</p>
       </div>
-      <button class="profile__add-button"></button>
+      <button class="profile__add-button" type="button"></button>
     </section>
     <section class="elements">
       <ul class="cards">
         <li class="card">
           <img class="card__photo" src="./images/India.jpg" alt="Индия">
           <div class="card__info">
-            <p class="card__title">Индия</p>
-            <img class="card__like" src="./images/like-button.svg" alt="кнопка лайк">
+            <h2 class="card__title">Индия</h2>
+            <button class="card__like" aria-label="Like"></button>
           </div>
         </li>
         <li class="card">
           <img class="card__photo" src="./images/Italy.jpg" alt="Италия">
           <div class="card__info">
-            <p class="card__title">Италия</p>
-            <img class="card__like" src="./images/like-button.svg" alt="кнопка лайк">
+            <h2 class="card__title">Италия</h2>
+            <button class="card__like" aria-label="Like"></button>
           </div>
         </li>
         <li class="card">
           <img class="card__photo" src="./images/Denmark.jpg" alt="Дания">
           <div class="card__info">
-            <p class="card__title">Дания</p>
-            <img class="card__like" src="./images/like-button.svg" alt="кнопка лайк">
+            <h2 class="card__title">Дания</h2>
+            <button class="card__like" aria-label="Like"></button>
           </div>
         </li>
         <li class="card">
           <img class="card__photo" src="./images/Vien.jpg" alt="Вена">
           <div class="card__info">
-            <p class="card__title">Вена</p>
-            <img class="card__like" src="./images/like-button.svg" alt="кнопка лайк">
+            <h2 class="card__title">Вена</h2>
+            <button class="card__like" aria-label="Like"></button>
           </div>
         </li>
         <li class="card">
           <img class="card__photo" src="./images/China.jpg" alt="Китай">
           <div class="card__info">
-            <p class="card__title">Китай</p>
-            <img class="card__like" src="./images/like-button.svg" alt="кнопка лайк">
+            <h2 class="card__title">Китай</h2>
+            <button class="card__like" aria-label="Like"></button>
           </div>
         </li>
         <li class="card">
           <img class="card__photo" src="./images/Germany.jpg" alt="Германия">
           <div class="card__info">
-            <p class="card__title">Германия</p>
-            <img class="card__like" src="./images/like-button.svg" alt="кнопка лайк">
+            <h2 class="card__title">Германия</h2>
+            <button class="card__like" aria-label="Like"></button>
           </div>
         </li>
       </ul>
@@ -75,13 +75,13 @@
   </footer>
   <section class="popup">
     <div class="popup__container">
-    <button class="popup__close-button"></button>
-    <form class="popup__form">
-      <p class="popup__title">Редактировать профиль</p>
-      <input class="popup__name-field" type="text" value="Жак-Ив Кусто">
-      <input class="popup__description-field" type="text" value="Исследователь океана">
-      <input class="popup__submit" type="submit" value="Сохранить">
-    </form>
+      <button class="popup__close-button" type="button"></button>
+      <form class="popup__form" name="edit-form">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <input class="popup__input popup__input_name" type="text" name="name-field">
+        <input class="popup__input popup__input_description" type="text" name="description-field">
+        <button class="popup__submit" type="submit">Сохранить</button>
+      </form>
     </div>
   </section>
 </div>

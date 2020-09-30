@@ -1,0 +1,11 @@
+@media screen and (min-width: 300px) {
+  .popup__input_description {
+    margin-bottom: 45px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .popup__description-field {
+    margin-bottom: 48px;
+  }
+}

@@ -1,19 +1,18 @@
 .popup__container {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
 }
 
 @media screen and (min-width: 300px) {
   .popup__container {
     width: 282px;
-    height: 362px;
+    align-items: flex-end;
   }
 }
 
 @media screen and (min-width: 960px) {
   .popup__container {
-    width: 471px;
-    height: 371px;
+    width: 480px;
+    align-items: center;
   }
 }
