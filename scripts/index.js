@@ -9,19 +9,19 @@ let profileDescription = document.querySelector(".profile__description");
 
 function popupToggle() {
     popup.classList.toggle("popup_opened");
-    getInput ();
 }
 
 function formSubmitHandler(evt) {
+    evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = jobInput.value;
-    evt.preventDefault();
     popupToggle();
 }
 
 function getInput () {
     nameInput.value =  profileName.textContent;
     jobInput.value = profileDescription.textContent;
+    popupToggle();
 }
 
 buttonOpenPopup.addEventListener("click", popupToggle);

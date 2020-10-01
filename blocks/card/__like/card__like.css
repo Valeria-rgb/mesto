@@ -3,6 +3,7 @@
   height: 18.13px;
   background-image: url("../../../images/like-button.svg");
   background-position: center;
+  background-color: transparent;
   border: none;
 }
 
