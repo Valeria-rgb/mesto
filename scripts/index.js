@@ -25,6 +25,6 @@ function getInput () {
 }
 
 buttonOpenPopup.addEventListener("click", popupToggle);
-buttonClosePopup.addEventListener("click", popupToggle);
+buttonClosePopup.addEventListener("click", getInput);
 formElement.addEventListener('submit', formSubmitHandler);
 

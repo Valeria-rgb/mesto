@@ -9,7 +9,7 @@
   outline-width: 0;
 }
 
-.popup__input:last-of-type {
+.popup__input:last-child {
   margin-bottom: 0;
 }
 
