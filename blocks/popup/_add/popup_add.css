@@ -1,0 +1,6 @@
+.popup_add {
+  visibility: hidden;
+  display: flex;
+  opacity: 0;
+  transition: visibility 1s ease, opacity 1s ease;
+}

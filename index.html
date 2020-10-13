@@ -25,63 +25,50 @@
     </section>
     <section class="elements">
       <ul class="cards">
-        <li class="card">
-          <img class="card__photo" src="./images/India.jpg" alt="Индия">
-          <div class="card__info">
-            <h2 class="card__title">Индия</h2>
-            <button class="card__like" aria-label="Like"></button>
-          </div>
-        </li>
-        <li class="card">
-          <img class="card__photo" src="./images/Italy.jpg" alt="Италия">
-          <div class="card__info">
-            <h2 class="card__title">Италия</h2>
-            <button class="card__like" aria-label="Like"></button>
-          </div>
-        </li>
-        <li class="card">
-          <img class="card__photo" src="./images/Denmark.jpg" alt="Дания">
-          <div class="card__info">
-            <h2 class="card__title">Дания</h2>
-            <button class="card__like" aria-label="Like"></button>
-          </div>
-        </li>
-        <li class="card">
-          <img class="card__photo" src="./images/Vien.jpg" alt="Вена">
-          <div class="card__info">
-            <h2 class="card__title">Вена</h2>
-            <button class="card__like" aria-label="Like"></button>
-          </div>
-        </li>
-        <li class="card">
-          <img class="card__photo" src="./images/China.jpg" alt="Китай">
-          <div class="card__info">
-            <h2 class="card__title">Китай</h2>
-            <button class="card__like" aria-label="Like"></button>
-          </div>
-        </li>
-        <li class="card">
-          <img class="card__photo" src="./images/Germany.jpg" alt="Германия">
-          <div class="card__info">
-            <h2 class="card__title">Германия</h2>
-            <button class="card__like" aria-label="Like"></button>
-          </div>
-        </li>
+        <template id="card__template">
+          <li class="card">
+            <img class="card__photo">
+            <button class="card__trash" aria-label="trash"></button>
+            <div class="card__info">
+              <h2 class="card__title"></h2>
+              <button class="card__like" aria-label="like"></button>
+            </div>
+          </li>
+        </template>
       </ul>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
-  <section class="popup">
-    <div class="popup__container">
-      <button class="popup__close-button" type="button"></button>
-      <form class="popup__form" name="edit-form">
-        <h3 class="popup__title">Редактировать профиль</h3>
-        <input class="popup__input popup__input_name" type="text" name="name-field">
-        <input class="popup__input popup__input_description" type="text" name="description-field">
-        <button class="popup__submit" type="submit">Сохранить</button>
-      </form>
+  <section class="popups">
+    <div class="popup popup_edit">
+      <div class="popup__container">
+        <button class="popup__close-button popup__close-button_edit-popup" type="button"></button>
+        <form class="popup__form popup__form_edit" name="edit-form">
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <input class="popup__input popup__input_name" type="text" name="name-field">
+          <input class="popup__input popup__input_description" type="text" name="description-field">
+          <button class="popup__submit" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_add">
+      <div class="popup__container popup__container_add">
+        <button class="popup__close-button popup__close-button_add-popup" type="button"></button>
+        <form class="popup__form popup__form_add" name="add-form">
+          <h3 class="popup__title popup__title_add">Новое место</h3>
+          <input class="popup__input popup__input_image-title" placeholder="Название" type="text" name="image-title" required>
+          <input class="popup__input popup__input_link-of-image" placeholder="Ссылка на картинку" type="url" name="link-of-image" required>
+          <button class="popup__submit popup__submit_add" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_scale-photo">
+      <div class="popup__photo-container">
+        <button class="popup__close-button popup__close-button_photo"></button>
+        <img class="popup__photo">
+      </div>
     </div>
   </section>
 </div>

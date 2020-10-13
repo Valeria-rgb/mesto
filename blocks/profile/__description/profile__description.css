@@ -5,6 +5,10 @@
   text-overflow: ellipsis;
 }
 
+.profile__description:hover {
+  cursor: default;
+}
+
 @media screen and (min-width: 300px) {
   .profile__description {
     font-size: 14px;
