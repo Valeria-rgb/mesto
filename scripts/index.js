@@ -1,30 +1,3 @@
-const initialCards = [
-    {
-        name: 'Индия',
-        link: './images/India.jpg'
-    },
-    {
-        name: 'Италия',
-        link: './images/Italy.jpg'
-    },
-    {
-        name: 'Дания',
-        link: './images/Denmark.jpg'
-    },
-    {
-        name: 'Вена',
-        link: './images/Vien.jpg'
-    },
-    {
-        name: 'Китай',
-        link: './images/China.jpg'
-    },
-    {
-        name: 'Германия',
-        link: './images/Germany.jpg'
-    }
-];
-
 const cardTemplate = document.querySelector("#card__template").content;
 const cardsContainer = document.querySelector(".cards");
 const fullScreenPhotoPopup = document.querySelector(".popup_scale-photo");
@@ -44,6 +17,26 @@ const imageLinkInput = document.querySelector(".popup__input_link-of-image");
 const formAdd = document.querySelector(".popup__form_add");
 const buttonClosePhotoPopup = document.querySelector(".popup__close-button_photo");
 
+function toggleLike(photoLike) {
+    photoLike.addEventListener('click', function (evt) {
+        evt.target.classList.toggle('card__like_active');
+    });
+}
+
+function deleteImage(deleteButton) {
+    deleteButton.addEventListener('click', function () {
+        const parent = deleteButton.closest('.card');
+        parent.remove();
+    });
+}
+
+function scalePhotoInPopup(image, link) {
+    image.addEventListener('click', function () {
+        fullScreenPhotoPopup.querySelector(".popup__photo").src = link;
+        openPopup(fullScreenPhotoPopup);
+    });
+}
+
 function createCard(link, name) {
     const cardItem = cardTemplate.cloneNode(true);
     const image = cardItem.querySelector(".card__photo");
@@ -53,22 +46,19 @@ function createCard(link, name) {
     image.src = link;
     image.alt = name;
     cardTitle.textContent = name;
-    photoLike.addEventListener('click', function (evt) {
-        evt.target.classList.toggle('card__like_active');
-    });
-    deleteButton.addEventListener('click', function () {
-        const parent = deleteButton.closest('.card');
-        parent.remove();
-    });
-    image.addEventListener('click', function () {
-        fullScreenPhotoPopup.querySelector(".popup__photo").src = link;
-        openPopup(fullScreenPhotoPopup);
-    });
+    toggleLike(photoLike);
+    deleteImage(deleteButton);
+    scalePhotoInPopup(image, link);
+    return cardItem;
+}
+
+function renderCard(cardItem) {
     cardsContainer.prepend(cardItem);
 }
 
 initialCards.forEach(function (item) {
-    createCard(item.link, item.name);
+    const cardItem = createCard(item.link, item.name);
+    renderCard(cardItem);
 })
 
 function openPopup(popup) {
@@ -79,7 +69,7 @@ function closePopup(popup) {
     popup.classList.remove("popup_opened");
 }
 
-function formSubmitHandler(evt) {
+function submitProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = jobInput.value;
@@ -92,12 +82,12 @@ function getInputProfile() {
     openPopup(popupEdit);
 }
 
-function getInputCards(evt) {
+function submitNewCardForm(evt) {
     evt.preventDefault();
-    let imageLink = imageLinkInput.value;
-    console.log()
-    let name = imageTitleInput.value;
-    createCard(imageLink, name)
+    const imageLink = imageLinkInput.value;
+    const name = imageTitleInput.value;
+    const cardItem = createCard(imageLink, name)
+    renderCard(cardItem);
     closePopup(popupAdd);
 }
 
@@ -106,9 +96,10 @@ buttonCloseEditPopup.addEventListener("click", function () {
     closePopup(popupEdit)
 });
 
-formEdit.addEventListener('submit', formSubmitHandler);
+formEdit.addEventListener('submit', submitProfileForm);
 
 buttonOpenAddPopup.addEventListener('click', function () {
+    formAdd.reset();
     openPopup(popupAdd)
 });
 
@@ -116,7 +107,7 @@ buttonCloseAddPopup.addEventListener("click", function () {
     closePopup(popupAdd)
 });
 
-formAdd.addEventListener("submit", getInputCards);
+formAdd.addEventListener("submit", submitNewCardForm);
 buttonClosePhotoPopup.addEventListener('click', function () {
     closePopup(fullScreenPhotoPopup)
 });

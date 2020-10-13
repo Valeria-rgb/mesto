@@ -2,7 +2,7 @@
   width: 282px;
   height: 282px;
   object-fit: cover;
- border-radius: 10px 10px 0 0;
+  border-radius: 10px 10px 0 0;
 }
 
 .card__photo:hover {
