@@ -29,22 +29,19 @@ function hideError(input, inputErrorClass) {
 
 function showError(input, errorClass, inputErrorClass) {
     const errorElement = findErrorElement(input)
-    console.log(errorElement)
-    console.log(errorClass)
-    console.log(inputErrorClass)
     errorElement.textContent = input.validationMessage;
     errorElement.classList.add(errorClass);
     input.classList.add(inputErrorClass);
 }
 
-function checkInputValidation(inputs) {
+function isAnyInvalidInput(inputs) {
     return inputs.some((inputElement) => {
         return !inputElement.validity.valid;
     })
 }
 
 function toggleButtonState(submitBtn, inputs, inactiveButtonClass) {
-    if (checkInputValidation(inputs)) {
+    if (isAnyInvalidInput(inputs)) {
         submitBtn.classList.add(inactiveButtonClass);
         submitBtn.disabled = true;
     } else {
@@ -63,7 +60,7 @@ function enableValidation({formSelector, inputSelector, submitButtonSelector, in
         const submitBtn = form.querySelector(submitButtonSelector)
         toggleButtonState(submitBtn, inputs, inactiveButtonClass)
         inputs.forEach(input => {
-            input.addEventListener('input', (evt) => {
+            input.addEventListener('input', () => {
                 toggleButtonState(submitBtn, inputs, inactiveButtonClass);
                 checkInputValidity(input, errorClass, inputErrorClass)
             })
