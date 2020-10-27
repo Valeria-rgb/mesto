@@ -35,10 +35,12 @@
     <div class="popup popup_edit">
       <div class="popup__container">
         <button class="popup__close-button popup__close-button_edit-popup" type="button"></button>
-        <form class="popup__form popup__form_edit" name="edit-form">
+        <form class="popup__form popup__form_edit" name="edit-form" novalidate>
           <h3 class="popup__title">Редактировать профиль</h3>
-          <input class="popup__input popup__input_name" type="text" name="name-field">
-          <input class="popup__input popup__input_description" type="text" name="description-field">
+          <input class="popup__input popup__input_name" type="text" name="name-field" minlength="2" maxlength="40" required>
+          <span class="popup__error_visible" id="name-field-error"></span>
+          <input class="popup__input popup__input_description" type="text" name="description-field" minlength="2" maxlength="200" required>
+          <span class="popup__error_visible" id="description-field-error"></span>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
       </div>
@@ -46,10 +48,12 @@
     <div class="popup popup_add">
       <div class="popup__container popup__container_add">
         <button class="popup__close-button popup__close-button_add-popup" type="button"></button>
-        <form class="popup__form popup__form_add" name="add-form">
+        <form class="popup__form popup__form_add" name="add-form" novalidate>
           <h3 class="popup__title popup__title_add">Новое место</h3>
-          <input class="popup__input popup__input_image-title" placeholder="Название" type="text" name="image-title" required>
+          <input class="popup__input popup__input_image-title" placeholder="Название" type="text" name="image-title" minlength="2" maxlength="30" required>
+          <span class="popup__error" id="image-title-error"></span>
           <input class="popup__input popup__input_link-of-image" placeholder="Ссылка на картинку" type="url" name="link-of-image" required>
+          <span class="popup__error" id="link-of-image-error"></span>
           <button class="popup__submit popup__submit_add" type="submit">Создать</button>
         </form>
       </div>
@@ -73,6 +77,7 @@
   </li>
 </template>
 <script src="./scripts/cards.js"></script>
+<script src="./scripts/validate.js"></script>
 <script src="./scripts/index.js"></script>
 </body>
 </html>

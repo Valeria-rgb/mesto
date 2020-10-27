@@ -111,12 +111,3 @@ formAdd.addEventListener("submit", submitNewCardForm);
 buttonClosePhotoPopup.addEventListener('click', function () {
     closePopup(fullScreenPhotoPopup)
 });
-
-
-
-
-
-
-
-
-
