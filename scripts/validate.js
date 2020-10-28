@@ -67,5 +67,3 @@ function enableValidation({formSelector, inputSelector, submitButtonSelector, in
         })
     })
 }
-
-enableValidation(obj);
