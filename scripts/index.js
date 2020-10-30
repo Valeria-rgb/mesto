@@ -16,7 +16,7 @@ const imageTitleInput = document.querySelector(".popup__input_image-title");
 const imageLinkInput = document.querySelector(".popup__input_link-of-image");
 const formAdd = document.querySelector(".popup__form_add");
 const buttonClosePhotoPopup = document.querySelector(".popup__close-button_photo");
-const popups = document.querySelectorAll(".popup");
+const escape = 'Escape';
 
 function toggleLike(photoLike) {
     photoLike.addEventListener('click', function (evt) {
@@ -63,11 +63,12 @@ initialCards.forEach(function (item) {
 })
 
 function openPopup(popup) {
-    enableValidation(obj);
+    document.addEventListener('keydown', closeByEscape);
     popup.classList.add("popup_opened");
 }
 
 function closePopup(popup) {
+    document.removeEventListener('keydown', closeByEscape);
     popup.classList.remove("popup_opened");
 }
 
@@ -94,10 +95,8 @@ function submitNewCardForm(evt) {
 }
 
 function closeByEscape(evt) {
-    if (evt.key === 'Escape') {
-        Array.from(popups).forEach(popup => {
-            closePopup(popup);
-        })
+    if (evt.key === escape) {
+        closePopup(document.querySelector('.popup_opened'));
     }
 }
 
@@ -126,7 +125,8 @@ buttonClosePhotoPopup.addEventListener('click', function () {
     closePopup(fullScreenPhotoPopup)
 });
 
-document.addEventListener('keydown', closeByEscape);
 popupAdd.addEventListener('click', closeByOverlay);
 popupEdit.addEventListener('click', closeByOverlay);
 fullScreenPhotoPopup.addEventListener('click', closeByOverlay);
+
+enableValidation(validationTools);
