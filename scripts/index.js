@@ -1,5 +1,7 @@
-const cardTemplate = document.querySelector("#card__template").content;
-const cardsContainer = document.querySelector(".cards");
+import FormValidator from './FormValidator.js';
+import Card from "./Card.js";
+import {initialCards, validationTools} from "./data.js";
+
 const fullScreenPhotoPopup = document.querySelector(".popup_scale-photo");
 const buttonOpenEditPopup = document.querySelector(".profile__edit-button");
 const buttonCloseEditPopup = document.querySelector(".popup__close-button_edit-popup");
@@ -18,53 +20,14 @@ const formAdd = document.querySelector(".popup__form_add");
 const buttonClosePhotoPopup = document.querySelector(".popup__close-button_photo");
 const escape = 'Escape';
 
-function toggleLike(photoLike) {
-    photoLike.addEventListener('click', function (evt) {
-        evt.target.classList.toggle('card__like_active');
-    });
-}
-
-function deleteImage(deleteButton) {
-    deleteButton.addEventListener('click', function () {
-        const parent = deleteButton.closest('.card');
-        parent.remove();
-    });
-}
-
-function scalePhotoInPopup(image, link) {
-    image.addEventListener('click', function () {
-        fullScreenPhotoPopup.querySelector(".popup__photo").src = link;
-        openPopup(fullScreenPhotoPopup);
-    });
-}
-
-function createCard(link, name) {
-    const cardItem = cardTemplate.cloneNode(true);
-    const image = cardItem.querySelector(".card__photo");
-    const photoLike = cardItem.querySelector(".card__like");
-    const cardTitle = cardItem.querySelector(".card__title");
-    const deleteButton = cardItem.querySelector(".card__trash");
-    image.src = link;
-    image.alt = name;
-    cardTitle.textContent = name;
-    toggleLike(photoLike);
-    deleteImage(deleteButton);
-    scalePhotoInPopup(image, link);
-    return cardItem;
-}
-
-function renderCard(cardItem) {
-    cardsContainer.prepend(cardItem);
-}
-
-initialCards.forEach(function (item) {
-    const cardItem = createCard(item.link, item.name);
-    renderCard(cardItem);
-})
-
 function openPopup(popup) {
     document.addEventListener('keydown', closeByEscape);
     popup.classList.add("popup_opened");
+}
+
+export function scalePhotoInPopup(image) {
+    fullScreenPhotoPopup.querySelector(".popup__photo").src = image;
+    openPopup(fullScreenPhotoPopup);
 }
 
 function closePopup(popup) {
@@ -85,14 +48,28 @@ function getInputProfile() {
     openPopup(popupEdit);
 }
 
+function getCardTemplate() {
+    return document.querySelector("#card__template").content;
+}
+
+function addCard(card) {
+    document.querySelector(".cards").prepend(card);
+}
+
 function submitNewCardForm(evt) {
     evt.preventDefault();
     const imageLink = imageLinkInput.value;
     const name = imageTitleInput.value;
-    const cardItem = createCard(imageLink, name)
-    renderCard(cardItem);
+    const generateCard = new Card(imageLink, name, getCardTemplate()).generateCard();
+    addCard(generateCard);
     closePopup(popupAdd);
 }
+
+initialCards.forEach((item) => {
+    const card = new Card(item.link, item.name, getCardTemplate());
+    const cardItem = card.generateCard();
+    document.querySelector(".cards").prepend(cardItem);
+})
 
 function closeByEscape(evt) {
     if (evt.key === escape) {
@@ -100,13 +77,19 @@ function closeByEscape(evt) {
     }
 }
 
-function closeByOverlay (evt) {
+function closeByOverlay(evt) {
     if (evt.target === evt.currentTarget) closePopup(evt.target);
 }
+
+const validateAddForm = new FormValidator(validationTools, formAdd);
+validateAddForm.enableValidation();
+const validateEditForm = new FormValidator(validationTools, formEdit);
+validateEditForm.enableValidation();
 
 buttonOpenEditPopup.addEventListener("click", getInputProfile);
 buttonCloseEditPopup.addEventListener("click", function () {
     closePopup(popupEdit)
+    validateEditForm.cleanInputValidityErrors()
 });
 
 formEdit.addEventListener('submit', submitProfileForm);
@@ -118,6 +101,7 @@ buttonOpenAddPopup.addEventListener('click', function () {
 
 buttonCloseAddPopup.addEventListener("click", function () {
     closePopup(popupAdd)
+    validateAddForm.cleanInputValidityErrors()
 });
 
 formAdd.addEventListener("submit", submitNewCardForm);
@@ -128,5 +112,3 @@ buttonClosePhotoPopup.addEventListener('click', function () {
 popupAdd.addEventListener('click', closeByOverlay);
 popupEdit.addEventListener('click', closeByOverlay);
 fullScreenPhotoPopup.addEventListener('click', closeByOverlay);
-
-enableValidation(validationTools);

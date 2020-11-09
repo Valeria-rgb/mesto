@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
     {
         name: 'Индия',
         link: './images/India.jpg'
@@ -24,3 +24,13 @@ const initialCards = [
         link: './images/Germany.jpg'
     }
 ];
+
+export const validationTools = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__submit_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+};
+
