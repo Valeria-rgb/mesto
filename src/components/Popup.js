@@ -1,4 +1,4 @@
-import { escape } from "../../utils/constants.js";
+import { escape } from "../utils/constants.js";
 export default class Popup {
 
     constructor(popupSelector) {

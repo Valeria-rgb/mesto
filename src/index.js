@@ -20,7 +20,7 @@ import {
     nameInput,
     popupAdd,
     popupEdit
-} from "../utils/constants.js";
+} from "./utils/constants.js";
 
 const validateAddForm = new FormValidator(validationTools, formAdd);
 validateAddForm.enableValidation();
