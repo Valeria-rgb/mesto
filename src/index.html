@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 <body>
@@ -13,7 +12,7 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="./images/profile__avatar.png" alt="Аватар">
+      <img class="profile__avatar" src='./images/profile__avatar.png' alt="Аватар">
       <div class="profile__info">
         <div class="profile__text">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -37,9 +36,9 @@
         <button class="popup__close-button popup__close-button_edit-popup" type="button"></button>
         <form class="popup__form popup__form_edit" name="edit-form" novalidate>
           <h3 class="popup__title">Редактировать профиль</h3>
-          <input class="popup__input popup__input_name" placeholder="Имя" type="text" name="name-field" minlength="2" maxlength="40" required>
+          <input class="popup__input popup__input_name" placeholder="Имя" type="text" name="name" id="name-field" minlength="2" maxlength="40" required>
           <span class="popup__error_visible" id="name-field-error"></span>
-          <input class="popup__input popup__input_description" placeholder="Род занятий" type="text" name="description-field" minlength="2" maxlength="200" required>
+          <input class="popup__input popup__input_description" placeholder="Род занятий" type="text" name="description" id="description-field" minlength="2" maxlength="200" required>
           <span class="popup__error_visible" id="description-field-error"></span>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
@@ -50,9 +49,9 @@
         <button class="popup__close-button popup__close-button_add-popup" type="button"></button>
         <form class="popup__form popup__form_add" name="add-form" novalidate>
           <h3 class="popup__title popup__title_add">Новое место</h3>
-          <input class="popup__input popup__input_image-title" placeholder="Название" type="text" name="image-title" minlength="2" maxlength="30" required>
+          <input class="popup__input popup__input_image-title" placeholder="Название" type="text" name="name" id="image-title" minlength="2" maxlength="30" required>
           <span class="popup__error" id="image-title-error"></span>
-          <input class="popup__input popup__input_link-of-image" placeholder="Ссылка на картинку" type="url" name="link-of-image" required>
+          <input class="popup__input popup__input_link-of-image" placeholder="Ссылка на картинку" type="url" name="link" id="link-of-image" required>
           <span class="popup__error" id="link-of-image-error"></span>
           <button class="popup__submit popup__submit_add" type="submit">Создать</button>
         </form>
@@ -62,6 +61,7 @@
       <div class="popup__photo-container">
         <button class="popup__close-button popup__close-button_photo"></button>
         <img class="popup__photo">
+        <h2 class="popup__photo-title"></h2>
       </div>
     </div>
   </section>
@@ -76,6 +76,5 @@
     </div>
   </li>
 </template>
-<script type="module" src="./scripts/index.js"></script>
 </body>
 </html>

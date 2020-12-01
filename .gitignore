@@ -1,2 +1,4 @@
 **/.idea
 **/.DS*
+node_modules
+dist

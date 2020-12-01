@@ -1,4 +1,4 @@
-@import url("../vendor/normalize.css");
+@import url("../../vendor/normalize.css");
 @import url("../fonts/inter.css");
 @import url("../blocks/root/root.css");
 @import url("../blocks/header/header.css");
@@ -43,3 +43,4 @@
 @import url("../blocks/popup/__submit/_disabled/popup__submit_disabled.css");
 @import url("../blocks/popup/__photo-container/popup__photo-container.css");
 @import url("../blocks/popup/__photo/popup__photo.css");
+@import url("../blocks/popup/__photo-title/popup__photo-title.css");

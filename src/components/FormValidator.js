@@ -14,8 +14,7 @@ export default class FormValidator {
     }
 
     _findErrorElement(input) {
-        const inputName = input.getAttribute('name')
-        return document.getElementById(`${inputName}-error`)
+        return this._formElement.querySelector(`#${input.id}-error`);
     }
 
     _hideError(input, inputErrorClass) {

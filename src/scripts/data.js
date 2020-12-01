@@ -1,27 +1,34 @@
+import india from '../images/India.jpg'
+import italy from '../images/Italy.jpg'
+import denmark from '../images/Denmark.jpg'
+import vien from '../images/Vien.jpg'
+import china from '../images/China.jpg'
+import germany from '../images/Germany.jpg'
+
 export const initialCards = [
     {
         name: 'Индия',
-        link: './images/India.jpg'
+        link: india
     },
     {
         name: 'Италия',
-        link: './images/Italy.jpg'
+        link: italy
     },
     {
         name: 'Дания',
-        link: './images/Denmark.jpg'
+        link: denmark
     },
     {
         name: 'Вена',
-        link: './images/Vien.jpg'
+        link: vien
     },
     {
         name: 'Китай',
-        link: './images/China.jpg'
+        link: china
     },
     {
         name: 'Германия',
-        link: './images/Germany.jpg'
+        link: germany
     }
 ];
 
