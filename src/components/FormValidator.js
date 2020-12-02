@@ -36,13 +36,17 @@ export default class FormValidator {
         })
     }
 
-    _toggleButtonState(submitBtn, inputs, inactiveButtonClass) {
+    disableButton(inactiveButtonClass) {
+        this._submitBtn.classList.add(inactiveButtonClass);
+        this._submitBtn.disabled = true;
+    }
+
+    _toggleButtonState(inputs, inactiveButtonClass) {
         if (this._isAnyInvalidInput(inputs)) {
-            submitBtn.classList.add(inactiveButtonClass);
-            submitBtn.disabled = true;
+            this.disableButton(inactiveButtonClass)
         } else {
-            submitBtn.classList.remove(inactiveButtonClass);
-            submitBtn.disabled = false;
+            this._submitBtn.classList.remove(inactiveButtonClass);
+            this._submitBtn.disabled = false;
         }
     }
 
@@ -51,11 +55,11 @@ export default class FormValidator {
             evt.preventDefault()
         })
         const inputs = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector))
-        const submitBtn = this._formElement.querySelector(this._settings.submitButtonSelector)
-        this._toggleButtonState(submitBtn, inputs, this._settings.inactiveButtonClass)
+        this._submitBtn = this._formElement.querySelector(this._settings.submitButtonSelector)
+        this._toggleButtonState(inputs, this._settings.inactiveButtonClass)
         inputs.forEach(input => {
             input.addEventListener('input', () => {
-                this._toggleButtonState(submitBtn, inputs, this._settings.inactiveButtonClass);
+                this._toggleButtonState(inputs, this._settings.inactiveButtonClass);
                 this._checkInputValidity(input, this._settings.errorClass, this._settings.inputErrorClass)
             })
         })

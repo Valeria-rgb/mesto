@@ -1,11 +1,11 @@
-import "./pages/index.css";
-import FormValidator from './components/FormValidator.js';
-import Card from "./components/Card.js";
-import Section from "./components/Section.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import UserInfo from "./components/UserInfo.js";
-import {initialCards, validationTools} from "./scripts/data.js";
+import "./index.css";
+import FormValidator from '../components/FormValidator.js';
+import Card from "../components/Card.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import {initialCards, validationTools} from "../utils/data.js";
 import {
     buttonOpenAddPopup,
     buttonOpenEditPopup,
@@ -20,7 +20,7 @@ import {
     nameInput,
     popupAdd,
     popupEdit
-} from "./utils/constants.js";
+} from "../utils/constants.js";
 
 const validateAddForm = new FormValidator(validationTools, formAdd);
 validateAddForm.enableValidation();
@@ -85,4 +85,5 @@ buttonOpenAddPopup.addEventListener('click', function () {
     formAdd.reset();
     validateAddForm.cleanInputValidityErrors();
     popupAddPlace.open();
+    validateAddForm.disableButton(validationTools.inactiveButtonClass);
 });

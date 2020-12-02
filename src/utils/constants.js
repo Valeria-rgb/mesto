@@ -12,3 +12,5 @@ export const escape = 'Escape';
 export const cardTemplate = "#card__template";
 export const profileName = ".profile__name";
 export const profileDescription = ".profile__description";
+
+
