@@ -26,7 +26,10 @@ module.exports = {
         },
             {
                 test: /.(png|svg|jpg|gif)$/,
-                loader: 'file-loader?name=./images/[name].[ext]'
+                loader: 'file-loader?name=./images/[name].[ext]',
+                options: {
+                    esModule: false,
+                }
             },
             {
                 test: /.(eot|ttf|woff|woff2)$/,
