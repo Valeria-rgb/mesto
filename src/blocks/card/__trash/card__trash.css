@@ -13,9 +13,9 @@
 }
 
 .card__trash:hover {
-  opacity: 60%;
+  opacity: .6;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .card__trash:focus {

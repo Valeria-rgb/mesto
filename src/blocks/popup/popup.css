@@ -9,6 +9,10 @@
   background-color: rgba(0,0,0,0.5) ;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
+  display: flex;
+  opacity: 0;
+  transition: visibility 1s ease, opacity 1s ease;
 }
 
 

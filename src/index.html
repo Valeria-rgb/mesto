@@ -12,7 +12,10 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/profile__avatar.png')%>"  alt="Аватар">
+      <div class="profile__avatar-container">
+        <img class="profile__avatar" src="<%=require('./images/profile__avatar.png')%>"  alt="Аватар">
+        <button class="profile__avatar-button"></button>
+      </div>
       <div class="profile__info">
         <div class="profile__text">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -62,6 +65,26 @@
         <button class="popup__close-button popup__close-button_photo"></button>
         <img class="popup__photo">
         <h2 class="popup__photo-title"></h2>
+      </div>
+    </div>
+    <div class="popup popup_delete-photo">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button"></button>
+        <div class="popup__form">
+          <h3 class="popup__title popup__title_delete">Вы уверены?</h3>
+          <button class="popup__submit" type="submit">Да</button>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup_new-avatar">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button"></button>
+        <div class="popup__form">
+          <h3 class="popup__title">Обновить аватар</h3>
+          <input class="popup__input popup__input_link-of-image" placeholder="Ссылка на картинку" type="url" name="link" id="link-of-image" required>
+          <span class="popup__error" id="link-of-image-error"></span>
+          <button class="popup__submit" type="submit">Сохранить</button>
+        </div>
       </div>
     </div>
   </section>

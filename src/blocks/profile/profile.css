@@ -2,6 +2,7 @@
   max-width: 882px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 @media screen and (min-width: 300px) {
