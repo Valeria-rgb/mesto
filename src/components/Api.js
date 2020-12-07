@@ -34,7 +34,7 @@ export default class Api {
             headers: this._headers,
             body: JSON.stringify({
                 name: data.name,
-                description: data.description
+                description: data.about
             })
         })
     }
@@ -83,7 +83,7 @@ export default class Api {
     }
 
 
-    }
+}
 
 
 
