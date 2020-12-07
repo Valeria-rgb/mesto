@@ -4,6 +4,8 @@ import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithSubmit from "../components/PopupWithSubmit.js";
+import Api from "../components/Api.js";
 import UserInfo from "../components/UserInfo.js";
 import {initialCards, validationTools} from "../utils/data.js";
 import {
@@ -21,6 +23,13 @@ import {
     popupAdd,
     popupEdit
 } from "../utils/constants.js";
+
+const api = new Api({
+    url: "https://mesto.nomoreparties.co/v1/cohort-18/cards",
+    headers: {
+        authorization: '4ce0d8a0-2bf1-4ede-8511-f9af6b75d79f'
+    }
+})
 
 const validateAddForm = new FormValidator(validationTools, formAdd);
 validateAddForm.enableValidation();
