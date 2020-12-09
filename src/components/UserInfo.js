@@ -6,10 +6,10 @@ export default class UserInfo {
     }
 
     getUserInfo() {
-        const info = {};
-        info._nameElement = this._nameElement.textContent;
-        info._descriptionElement = this._descriptionElement.textContent;
-        return info;
+        return {
+            name: this._nameElement.textContent,
+            about: this._descriptionElement.textContent
+        }
     }
 
     setUserInfo(info) {
@@ -17,8 +17,9 @@ export default class UserInfo {
         this._descriptionElement.textContent = info.about;
     }
 
-    setAvatar(info) {
-        this._avatarElement.src = info.avatar;
+    setAvatar(avatar) {
+        console.log("avatar url - " + avatar)
+        this._avatarElement.src = avatar;
     }
 }
 

@@ -101,11 +101,18 @@ api.getCards()
     })
     .catch(console.error);
 
-const user = new UserInfo({
-    nameElement: profileName,
-    descriptionElement: profileDescription,
-    avatarElement: profileAvatar
-});
+let user;
+
+api.getUserInfo()
+    .then((userInfo) => {
+        user = new UserInfo({
+            nameElement: profileName,
+            descriptionElement: profileDescription,
+            avatarElement: profileAvatar
+        });
+        user.setAvatar(userInfo.avatar)
+        user.setUserInfo(userInfo)
+    })
 
 const photoPopup = new PopupWithImage(fullScreenPhotoPopup);
 photoPopup.setEventListeners();
@@ -122,18 +129,18 @@ const popupChangeAvatar = new PopupWithForm(popupAvatar, (avatar) => {
 popupChangeAvatar.setEventListeners();
 
 
-
-const popupEditProfile = new PopupWithForm(popupEdit, inputValues => {
-    api.changeUserInfo(inputValues.name, inputValues.about)
+const popupEditProfile = new PopupWithForm(popupEdit, (inputValues) => {
+    console.log(JSON.stringify(inputValues))
+    api.changeUserInfo(inputValues.name, inputValues.description)
         .then(() => {
-        user.setUserInfo({
-            userName: inputValues.name,
-            userJob: inputValues.about
-        });
-        popupEditProfile.close();
+            user.setUserInfo({
+                name: inputValues.name,
+                about: inputValues.description
+            });
+            popupEditProfile.close();
         })
         .catch((err) => console.log(`Упс! ${err}`))
-        });
+});
 
 popupEditProfile.setEventListeners();
 
@@ -154,8 +161,8 @@ popupAddPlace.setEventListeners();
 
 buttonOpenEditPopup.addEventListener('click', function () {
     const userData = user.getUserInfo();
-    nameInput.value = userData.userName;
-    jobInput.value = userData.userJob;
+    nameInput.value = userData.name;
+    jobInput.value = userData.about;
     validateEditForm.cleanInputValidityErrors();
     popupEditProfile.open()
 });
