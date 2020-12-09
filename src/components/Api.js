@@ -50,8 +50,8 @@ export default class Api {
         })
     }
 
-    showLikes(card) {
-        return this._sendData(`cards/likes/${card}`, {
+    addLike(cardId) {
+        return this._sendData(`cards/likes/${cardId}`, {
             method: "PUT",
             headers: this._headers
         })
@@ -65,8 +65,8 @@ export default class Api {
         })
     }
 
-    deleteLike(card) {
-        return this._sendData(`cards/likes/${card}`, {
+    deleteLike(cardId) {
+        return this._sendData(`cards/likes/${cardId}`, {
             method: "DELETE",
             headers: this._headers
         })

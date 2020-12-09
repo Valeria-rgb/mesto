@@ -10,6 +10,7 @@ export default class Section {
     }
 
     addItem(item) {
+        console.log('что происходит')
         this._container.prepend(item);
     }
 }
