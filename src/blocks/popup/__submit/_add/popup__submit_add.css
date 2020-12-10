@@ -1,8 +1,0 @@
-@media screen and (min-width: 300px) and (max-width: 960px){
-  .popup__submit_add {
-    width: 200px;
-    height: 40px;
-    margin-top: 36px;
-    margin-bottom: 30px;
-  }
-}

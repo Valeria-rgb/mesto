@@ -1,6 +1,7 @@
 export default class Card {
     constructor(
-        {link, name, _id, likes, owner, userId},
+        {link, name, _id, likes, owner},
+        userId,
         handleCardClick,
         templateSelector,
         deleteCallback,
@@ -34,7 +35,6 @@ export default class Card {
         this._likeCounter = this._item.querySelector(".card__like-counter");
         this._likeCounter.textContent = this._likes.length;
         this._item.querySelector(".card__trash").src = this._trash;
-
         if (this._userId !== this._owner) {
             this._item.querySelector(".card__trash").classList.add("card__trash_invisible");
         }
