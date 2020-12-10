@@ -21,7 +21,6 @@ import {
     fullScreenPhotoPopup,
     jobInput,
     nameInput,
-    avatarInput,
     popupAdd,
     popupEdit,
     popupAvatar,
@@ -37,7 +36,6 @@ const api = new Api({
         'Content-Type': 'application/json'
     }
 })
-
 
 const validateAddForm = new FormValidator(validationTools, formAdd);
 validateAddForm.enableValidation();
@@ -107,7 +105,7 @@ api.getCards()
         );
         cardSection.renderItems();
     })
-    .catch(console.error);
+    .catch((err) => console.log(`Упс! ${err}`))
 
 let userInfo;
 let userId;
@@ -125,7 +123,7 @@ function initializeCards() {
             );
             cardSection.renderItems();
         })
-        .catch(console.error);
+        .catch((err) => console.log(`Упс! ${err}`))
 }
 
 function initializeUserInfo(data) {
@@ -146,15 +144,16 @@ api.getUserInfo()
     .then(() => {
         initializeCards();
     })
+    .catch((err) => console.log(`Упс! ${err}`))
 
 const photoPopup = new PopupWithImage(fullScreenPhotoPopup);
 photoPopup.setEventListeners();
 
-const popupChangeAvatar = new PopupWithForm(popupAvatar, (avatar) => {
+const popupChangeAvatar = new PopupWithForm(popupAvatar, (inputValues) => {
     popupChangeAvatar.showLoading(true);
-    api.changeAvatar(avatar)
+    api.changeAvatar(inputValues.avatar)
         .then(() => {
-            userInfo.setAvatar(avatar);
+            userInfo.setAvatar(inputValues.avatar);
             popupChangeAvatar.close();
         })
         .catch((err) => console.log(`Упс! ${err}`))
@@ -163,7 +162,6 @@ const popupChangeAvatar = new PopupWithForm(popupAvatar, (avatar) => {
         })
 })
 popupChangeAvatar.setEventListeners();
-
 
 const popupEditProfile = new PopupWithForm(popupEdit, (inputValues) => {
     popupEditProfile.showLoading(true);
@@ -191,10 +189,10 @@ const popupAddPlace = new PopupWithForm(popupAdd, inputValues => {
             cardSection.addItem(newCard);
             popupAddPlace.close()
         })
+        .catch((err) => console.log(`Упс! ${err}`))
         .finally(() => {
             popupAddPlace.showLoading(false);
         })
-        .catch((err) => console.log(`Упс! ${err}`))
 });
 
 popupAddPlace.setEventListeners();
@@ -215,9 +213,7 @@ buttonOpenAddPopup.addEventListener('click', function () {
 });
 
 buttonEditAvatar.addEventListener('click', function () {
-    // const userData = userInfo.getUserInfo();
-    // // avatarInput.value = userData.avatar;
-    // avatar.value = '';
+    formAvatar.reset();
     validateAvatarForm.cleanInputValidityErrors();
     popupChangeAvatar.open()
     validateAvatarForm.disableButton(validationTools.inactiveButtonClass);

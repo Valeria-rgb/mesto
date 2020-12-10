@@ -71,5 +71,4 @@ export default class FormValidator {
             this._hideError(input, this._settings.inputErrorClass)
         })
     }
-
 }

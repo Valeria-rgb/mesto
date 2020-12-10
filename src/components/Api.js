@@ -73,7 +73,7 @@ export default class Api {
     }
 
     changeAvatar(avatar) {
-        return this._sendData("users/me/avatar", {
+        return this._sendData('users/me/avatar', {
             method: "PATCH",
             headers: this._headers,
             body: JSON.stringify({
@@ -81,7 +81,6 @@ export default class Api {
             })
         })
     }
-
 
 }
 
