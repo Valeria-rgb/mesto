@@ -39,6 +39,9 @@ export default class Card {
             this._item.querySelector(".card__trash").classList.add("card__trash_invisible");
         }
         this._setEventListeners();
+        if (this._likes.find((item) => item._id === this._userId)) {
+            this.toggleLike()
+        }
         return this._item;
     }
 
@@ -57,13 +60,13 @@ export default class Card {
         this._image.addEventListener('click', () => this._handleCardClick(this._link, this._name));
     }
 
-    toggleLike(enable) {
+    toggleLike() {
         this._like.classList.toggle('card__like_active');
-        if (enable) {
-            this._likeCounter.textContent = this._likes.length + 1;
-        } else {
-            this._likeCounter.textContent = this._likes.length;
-        }
+    }
+
+    updateLikes(likes) {
+        this._likes = likes
+        this._likeCounter.textContent = this._likes.length
     }
 
     _getLikeState() {

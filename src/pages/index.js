@@ -75,12 +75,18 @@ function createCard(item, userId) {
         },
         (cardId) => {
             api.addLike(cardId)
-                .then(() => card.toggleLike(true))
+                .then((data) => {
+                    card.toggleLike()
+                    card.updateLikes(data.likes)
+                })
                 .catch((err) => console.log(`Упс! ${err}`))
         },
         (cardId) => {
             api.deleteLike(cardId)
-                .then(() => card.toggleLike(false))
+                .then((cardResponse) => {
+                    card.toggleLike()
+                    card.updateLikes(cardResponse.likes)
+                })
                 .catch((err) => console.log(`Упс! ${err}`))
         }
     );
