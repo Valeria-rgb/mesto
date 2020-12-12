@@ -91,39 +91,19 @@ function createCard(item, userId) {
     return card.generateCard();
 }
 
-let cardSection;
-
-api.getCards()
-    .then(data => {
-        cardSection = new Section({
-                items: data,
-                renderer: item => {
-                    cardSection.addItem(createCard(item, userId));
-                },
-            },
-            cardContainer
-        );
-        cardSection.renderItems();
-    })
-    .catch((err) => console.log(`Упс! ${err}`))
+const cardSection = new Section(
+    (item) => {
+        const card = createCard(item, userId);
+        cardSection.addItem(card);
+    },
+    cardContainer
+);
 
 let userInfo;
 let userId;
 
-function initializeCards() {
-    api.getCards()
-        .then(data => {
-            cardSection = new Section({
-                    items: data,
-                    renderer: item => {
-                        cardSection.addItem(createCard(item, userId));
-                    },
-                },
-                cardContainer
-            );
-            cardSection.renderItems();
-        })
-        .catch((err) => console.log(`Упс! ${err}`))
+function initializeCards(cards) {
+    cardSection.renderItems(cards);
 }
 
 function initializeUserInfo(data) {
@@ -137,12 +117,13 @@ function initializeUserInfo(data) {
     userId = data._id
 }
 
-api.getUserInfo()
+Promise.all([
+    api.getUserInfo(),
+    api.getCards()
+])
     .then((data) => {
-        initializeUserInfo(data);
-    })
-    .then(() => {
-        initializeCards();
+        initializeUserInfo(data[0]);
+        initializeCards(data[1]);
     })
     .catch((err) => console.log(`Упс! ${err}`))
 
